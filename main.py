@@ -3,3 +3,6 @@
 imagen promedio de cada uno de los 10 dígitos disponibles en este dataset. Puede
 generarlas todas juntas, o generarlas en base a un menú, o generarlas en base al
 número que el usuario ingrese por teclado"""
+
+
+"testing"

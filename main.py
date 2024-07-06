@@ -1,9 +1,4 @@
 from sklearn import datasets
-import pandas as pd
-
-from sklearn import datasets
-import pandas as pd
-
 ##Pregunta a:
 """Manipular el dataset digits de sklearn para generar una matriz de 8x8 con la
 imagen promedio de cada uno de los 10 dígitos disponibles en este dataset. Puede
@@ -14,5 +9,7 @@ misdatos = datasets.load_digits()
 #ultimos datos "012...898"
 
 #Imprimimos data
-print(misdatos['data'])
+matrizes8x8 = misdatos['data']
+print(matrizes8x8)
 
+#Here will go the code to generate the 8x8 

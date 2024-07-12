@@ -9,6 +9,16 @@ import os
 # Funciones ya implementadas
 
 def Reescalar_Img(image, nuevo_ancho, nuevo_alto):
+    """Reescala una imagen a un nuevo tamaño.
+
+    Args:
+        image (pyplot): Imagen a reescalar.
+        nuevo_ancho (int): Nuevo ancho de la imagen.
+        nuevo_alto (int): Nuevo alto de la imagen.
+
+    Returns:
+        pyplot: Imagen reescalada.
+    """
     alto_original, ancho_original, canales = image.shape
     image_reescalada = np.zeros((nuevo_alto, nuevo_ancho, canales), dtype=np.uint8)
 
@@ -22,6 +32,11 @@ def Reescalar_Img(image, nuevo_ancho, nuevo_alto):
 
 
 def escala_de_grises_método_luminisidad(image):
+    """Convierte una imagen a escala de grises utilizando el método de luminosidad.
+
+    Returns:
+        pyplot: Imagen en escala de grises.
+    """
     alto, ancho, canales = image.shape
     grayscale_image = np.zeros((alto, ancho), dtype=np.uint8)
 
@@ -35,6 +50,12 @@ def escala_de_grises_método_luminisidad(image):
 
 
 def ConvertirImg(image, filename):
+    """Convierte una imagen a escala de grises y la guarda en un archivo.
+
+    Args:
+        image (pyplot): Imagen a convertir.
+        filename (str): Nombre del archivo donde se guardará la imagen.
+    """
     nuevo_ancho = 8
     nuevo_alto = 8
     rescaled_image = Reescalar_Img(image, nuevo_ancho, nuevo_alto)
@@ -44,12 +65,28 @@ def ConvertirImg(image, filename):
 
 
 def leer_imagen(ruta):
+    """Lee una imagen y la convierte en una lista 3D.
+
+    Args:
+        ruta (str): Ruta de la imagen a leer.
+
+    Returns:
+        list[list[list[int]]]: Lista 3D que representa la imagen.
+    """
     np_array = np.array(imageio.imread(ruta), dtype='int')
     lista_3d = np_array.tolist()
     return lista_3d
 
 
 def array_custom(ruta):
+    """
+
+    Args:
+        ruta (_type_): _description_
+
+    Returns:
+        _type_: _description_
+    """
     image = plt.imread(ruta)
     ConvertirImg(image, "final.jpg")
     lrd = leer_imagen("final.jpg")

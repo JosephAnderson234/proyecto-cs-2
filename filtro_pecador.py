@@ -1,34 +1,7 @@
-"""import imageio
-from PIL import Image
 import numpy as np
 import matplotlib.pyplot as plt
-
-# Cargar la imagen
-image_path = 'xd.jpg'
-image = Image.open(image_path)
-
-# Convertir la imagen a escala de grises
-gray_image = image.convert('L')
-
-# Convertir la imagen a una matriz de numpy
-image_array = np.array(gray_image)
-
-# Aplicar un umbral para convertir la imagen a blanco y negro (contraste absoluto)
-threshold = 128
-bw_image_array = (image_array > threshold) * 255
-
-# Convertir de nuevo la matriz a una imagen PIL
-bw_image = Image.fromarray(bw_image_array.astype('uint8'), 'L')
-bw_image.save("final.jpg")"""
-# Mostrar la imagen resultante
-"""plt.figure(figsize=(8, 8))
-plt.imshow(bw_image, cmap='gray')
-plt.axis('off')
-plt.show()"""
-
-
+import imageio
 import numpy as np
-import matplotlib.pyplot as plt
 
 def Reescalar_Img(image, nuevo_ancho, nuevo_alto):
     alto_original, ancho_original, canales = image.shape
@@ -63,11 +36,6 @@ def ConvertirImg(image, filename):
     print(f"Imagen guardada como {filename}")
 
 
-image = plt.imread("xd.jpg")
-ConvertirImg(image, "final.jpg")
-
-import imageio
-import numpy as np
 
 
 def leer_imagen(ruta):
@@ -82,22 +50,28 @@ def leer_imagen(ruta):
     # noinspection PyTypeChecker
     lista_3d = np_array.tolist()
     return lista_3d
-lrd = leer_imagen("final.jpg")
-print(lrd)
 
-lista_limpia = []
-for i in lrd:
-    fila = []
-    for j in i:
-        fila.append(j[0])
-    lista_limpia.append(fila)
-    
-print("-------------------")
-print(lista_limpia)    
-print(len(lista_limpia), len(lista_limpia[0]))
 
-for i in range(len(lista_limpia)):
-    for j in range(len(lista_limpia[i])):
-        lista_limpia[i][j] = 16 -int(lista_limpia[i][j] * (16/255))
+def array_custom(ruta):
+    image = plt.imread("xd.jpg")
+    ConvertirImg(image, "final.jpg")
+    lrd = leer_imagen("final.jpg")
+    print(lrd)
 
-lista_limpia = np.array(lista_limpia)
+    lista_limpia = []
+    for i in lrd:
+        fila = []
+        for j in i:
+            fila.append(j[0])
+        lista_limpia.append(fila)
+        
+    print("-------------------")
+    print(lista_limpia)    
+    print(len(lista_limpia), len(lista_limpia[0]))
+
+    for i in range(len(lista_limpia)):
+        for j in range(len(lista_limpia[i])):
+            lista_limpia[i][j] = 16 -int(lista_limpia[i][j] * (16/255))
+
+    lista_limpia = np.array(lista_limpia)
+    return lista_limpia

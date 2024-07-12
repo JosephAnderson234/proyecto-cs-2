@@ -4,7 +4,8 @@ import pandas as pd
 from sklearn.datasets import load_digits
 import matplotlib.pyplot as plt
 import tkinter
-import filtro_aplicado as fap
+import filtro_pecador as fp
+import os
 # Cargar el dataset digits de sklearn
 digitos = load_digits()
 
@@ -75,13 +76,14 @@ def encontrar_mas_parecidos(nuevo_digito):
 
 # Leer el nuevo dígito
 #nuevo_digito = leer_digito()
-"""nuevo_digito = tkinter.filedialog.askopenfilename(
+archivo_imagen = tkinter.filedialog.askopenfilename(
+        initialdir="./",
         title="Seleccionar archivo",
         filetypes=(("Archivos de imagenes jpg", "*.jpg"), ("all files", "*.*"))
-)"""
+)
 
 #print(nuevo_digito)
-nuevo_digito = fap.lista_limpia
+nuevo_digito = fp.array_custom(os.path.normpath(archivo_imagen))
 # Encontrar los 3 dígitos más parecidos
 parecidos = encontrar_mas_parecidos(nuevo_digito)
 for distancia, digito in parecidos:

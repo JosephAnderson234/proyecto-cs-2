@@ -178,7 +178,7 @@ def calcular_distancia_euclidiana(img1, img2):
     return np.sqrt(distancia)
 
 
-def encontrar_mas_parecidos(nuevo_digito):
+def encontrar_mas_parecidos(nuevo_digito, limite=3):
     """Encuentra los dígitos más parecidos a uno nuevo.
 
     Args:
@@ -192,10 +192,15 @@ def encontrar_mas_parecidos(nuevo_digito):
         distancia = calcular_distancia_euclidiana(nuevo_digito, imagenes[i])
         distancias.append((distancia, targets[i]))
     distancias.sort(key=lambda x: x[0])
-    return distancias[:3]
+    return distancias[:limite]
 
 
-def clasificar_digito(parecidos):
+def clasificar_digito(parecidos, nd=None):
+    """Clasifica un dígito basado en los dígitos más parecidos.
+
+    Args:
+        parecidos (list[(int, int)]): Lista de tuplas con las distancias y los dígitos más parecidos.
+    """
     conteo = [0] * 10
     for distancia, digito in parecidos:
         conteo[digito] += 1
@@ -204,8 +209,9 @@ def clasificar_digito(parecidos):
         print(
             f"Soy la inteligencia artificial, y he detectado que el dígito ingresado corresponde al número {clasificacion}")
     else:
-        print("No se pudo clasificar el dígito con seguridad.")
-
+        parecidos = encontrar_mas_parecidos(nd, 12)
+        print(parecidos)
+        clasificar_digito(parecidos)
 
 def clasificar_con_promedio(nuevo_digito):
     distancias = []
@@ -249,7 +255,7 @@ def menu():
             parecidos = encontrar_mas_parecidos(nuevo_digito)
             for distancia, digito in parecidos:
                 print(f'Dígito: {digito}, Distancia: {distancia}')
-            clasificar_digito(parecidos)
+            clasificar_digito(parecidos, nd=nuevo_digito)
             clasificar_con_promedio(nuevo_digito)
 
         elif opcion == '4':

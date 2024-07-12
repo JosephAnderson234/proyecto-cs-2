@@ -2,7 +2,6 @@ import imageio
 import numpy as np
 import matplotlib.pyplot as plt
 from sklearn.datasets import load_digits
-import filtro_pecador as fp
 import os
 
 # Cargar el dataset digits de sklearn

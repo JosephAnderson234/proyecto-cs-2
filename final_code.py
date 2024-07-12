@@ -190,18 +190,21 @@ def menu():
             clasificar_con_promedio(nuevo_digito)
 
         elif opcion == '4':
-            nuevo_digito = leer_digito()
+            archivo_imagen = input("Ingrese la ruta del archivo de la imagen: ")
+            nuevo_digito = fp.array_custom(os.path.normpath(archivo_imagen))
             parecidos = encontrar_mas_parecidos(nuevo_digito)
             for distancia, digito in parecidos:
                 print(f'Dígito: {digito}, Distancia: {distancia}')
 
         elif opcion == '5':
-            nuevo_digito = leer_digito()
+            archivo_imagen = input("Ingrese la ruta del archivo de la imagen: ")
+            nuevo_digito = fp.array_custom(os.path.normpath(archivo_imagen))
             parecidos = encontrar_mas_parecidos(nuevo_digito)
             clasificar_digito(parecidos)
 
         elif opcion == '6':
-            nuevo_digito = leer_digito()
+            archivo_imagen = input("Ingrese la ruta del archivo de la imagen: ")
+            nuevo_digito = fp.array_custom(os.path.normpath(archivo_imagen))
             clasificar_con_promedio(nuevo_digito)
 
         elif opcion == '7':

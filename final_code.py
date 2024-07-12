@@ -213,7 +213,6 @@ def clasificar_digito(parecidos, nd=None):
             f"Soy la inteligencia artificial, y he detectado que el dígito ingresado corresponde al número {clasificacion}")
     else:
         parecidos = encontrar_mas_parecidos(nd, 12)
-        print(parecidos)
         clasificar_digito(parecidos)
 
 def clasificar_con_promedio(nuevo_digito):

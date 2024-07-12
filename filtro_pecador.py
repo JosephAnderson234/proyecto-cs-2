@@ -53,10 +53,10 @@ def leer_imagen(ruta):
 
 
 def array_custom(ruta):
-    image = plt.imread("xd.jpg")
+    image = plt.imread(ruta)
     ConvertirImg(image, "final.jpg")
     lrd = leer_imagen("final.jpg")
-    print(lrd)
+    #print(lrd)
 
     lista_limpia = []
     for i in lrd:
@@ -65,9 +65,9 @@ def array_custom(ruta):
             fila.append(j[0])
         lista_limpia.append(fila)
         
-    print("-------------------")
-    print(lista_limpia)    
-    print(len(lista_limpia), len(lista_limpia[0]))
+    #print("-------------------")
+    ##print(lista_limpia)    
+    #print(len(lista_limpia), len(lista_limpia[0]))
 
     for i in range(len(lista_limpia)):
         for j in range(len(lista_limpia[i])):

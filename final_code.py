@@ -18,6 +18,16 @@ promedios = np.zeros((10, 8, 8))
 contador = np.zeros(10)
 
 
+# Calcular la imagen promedio de cada dígito
+for i in range(len(imagenes)):
+    promedios[targets[i]] += imagenes[i]
+    contador[targets[i]] += 1
+
+for i in range(10):
+    promedios[i] /= contador[i]
+
+
+
 # Funciones ya implementadas
 
 def Reescalar_Img(image, nuevo_ancho, nuevo_alto):
@@ -116,15 +126,6 @@ def array_custom(ruta):
 
     lista_limpia = np.array(lista_limpia)
     return lista_limpia
-
-# Calcular la imagen promedio de cada dígito
-for i in range(len(imagenes)):
-    promedios[targets[i]] += imagenes[i]
-    contador[targets[i]] += 1
-
-for i in range(10):
-    promedios[i] /= contador[i]
-
 
 def mostrar_imagen_promedio(index):
     """Muestra la imagen promedio de un dígito.

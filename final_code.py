@@ -28,8 +28,7 @@ for i in range(10):
 
 
 
-# Funciones ya implementadas
-
+# Funciones ya implementadas del proyecto de William
 def Reescalar_Img(image, nuevo_ancho, nuevo_alto):
     """Reescala una imagen a un nuevo tamaño.
 
@@ -52,7 +51,7 @@ def Reescalar_Img(image, nuevo_ancho, nuevo_alto):
 
     return image_reescalada
 
-
+# Funciones ya implementadas del proyecto de William
 def escala_de_grises_método_luminisidad(image):
     """Convierte una imagen a escala de grises utilizando el método de luminosidad.
 
@@ -70,7 +69,7 @@ def escala_de_grises_método_luminisidad(image):
 
     return grayscale_image
 
-
+# Funciones ya implementadas del proyecto de Nayeli
 def ConvertirImg(image, filename):
     """Convierte una imagen a escala de grises y la guarda en un archivo.
 
@@ -82,10 +81,12 @@ def ConvertirImg(image, filename):
     nuevo_alto = 8
     rescaled_image = Reescalar_Img(image, nuevo_ancho, nuevo_alto)
     grayscale_image = escala_de_grises_método_luminisidad(rescaled_image)
-    plt.imsave(filename, grayscale_image, cmap='gray')
+    plt.imsave(filename, grayscale_image, cmap="gray")
     print(f"Imagen guardada como {filename}")
 
 
+
+#Extraido de tarea 2 de programación Teoria 2
 def leer_imagen(ruta):
     """Lee una imagen y la convierte en una lista 3D.
 
@@ -95,7 +96,7 @@ def leer_imagen(ruta):
     Returns:
         list[list[list[int]]]: Lista 3D que representa la imagen.
     """
-    np_array = np.array(imageio.imread(ruta), dtype='int')
+    np_array = np.array(imageio.imread(ruta), dtype="int")
     lista_3d = np_array.tolist()
     return lista_3d
 
@@ -127,14 +128,16 @@ def array_custom(ruta):
     lista_limpia = np.array(lista_limpia)
     return lista_limpia
 
+
+
 def mostrar_imagen_promedio(index):
     """Muestra la imagen promedio de un dígito.
 
     Args:
         index (int): Número del dígito a mostrar.
     """
-    plt.imshow(promedios[index], cmap='gray')
-    plt.title(f'Dígito {index}')
+    plt.imshow(promedios[index], cmap="gray")
+    plt.title(f"Dígito {index}")
     plt.show()
 
 
@@ -151,7 +154,7 @@ def leer_digito():
         digito.append(fila)
     return np.array(digito)
 
-
+# Funciones ya implementadas del proyecto de William
 def calcular_distancia_euclidiana(img1, img2):
     """Calcula la distancia euclidiana entre dos imágenes.
 
@@ -237,46 +240,46 @@ def menu():
         print("7. Salir")
         opcion = input("Ingrese su opción: ")
 
-        if opcion == '1':
+        if opcion == "1":
             index = int(input("Ingrese el número del dígito que desea ver (0-9): "))
             mostrar_imagen_promedio(index)
 
-        elif opcion == '2':
+        elif opcion == "2":
             nuevo_digito = leer_digito()
             parecidos = encontrar_mas_parecidos(nuevo_digito)
             for distancia, digito in parecidos:
-                print(f'Dígito: {digito}, Distancia: {distancia}')
+                print(f"Dígito: {digito}, Distancia: {distancia}")
             clasificar_digito(parecidos)
             clasificar_con_promedio(nuevo_digito)
 
-        elif opcion == '3':
+        elif opcion == "3":
             archivo_imagen = input("Ingrese la ruta del archivo de la imagen: ")
             nuevo_digito = array_custom(os.path.normpath(archivo_imagen))
             parecidos = encontrar_mas_parecidos(nuevo_digito)
             for distancia, digito in parecidos:
-                print(f'Dígito: {digito}, Distancia: {distancia}')
+                print(f"Dígito: {digito}, Distancia: {distancia}")
             clasificar_digito(parecidos, nd=nuevo_digito)
             clasificar_con_promedio(nuevo_digito)
 
-        elif opcion == '4':
+        elif opcion == "4":
             archivo_imagen = input("Ingrese la ruta del archivo de la imagen: ")
             nuevo_digito = array_custom(os.path.normpath(archivo_imagen))
             parecidos = encontrar_mas_parecidos(nuevo_digito)
             for distancia, digito in parecidos:
-                print(f'Dígito: {digito}, Distancia: {distancia}')
+                print(f"Dígito: {digito}, Distancia: {distancia}")
 
-        elif opcion == '5':
+        elif opcion == "5":
             archivo_imagen = input("Ingrese la ruta del archivo de la imagen: ")
             nuevo_digito = array_custom(os.path.normpath(archivo_imagen))
             parecidos = encontrar_mas_parecidos(nuevo_digito)
             clasificar_digito(parecidos)
 
-        elif opcion == '6':
+        elif opcion == "6":
             archivo_imagen = input("Ingrese la ruta del archivo de la imagen: ")
             nuevo_digito = array_custom(os.path.normpath(archivo_imagen))
             clasificar_con_promedio(nuevo_digito)
 
-        elif opcion == '7':
+        elif opcion == "7":
             print("Saliendo del programa...")
             break
 

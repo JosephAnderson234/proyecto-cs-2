@@ -3,6 +3,8 @@ import matplotlib.pyplot as plt
 import imageio
 import numpy as np
 
+
+#Código extraido del proyecto de William
 def Reescalar_Img(image, nuevo_ancho, nuevo_alto):
     alto_original, ancho_original, canales = image.shape
     image_reescalada = np.zeros((nuevo_alto, nuevo_ancho, canales), dtype=np.uint8)
@@ -37,7 +39,7 @@ def ConvertirImg(image, filename):
 
 
 
-
+#Código extraido de la tarea 2 de programación teoria 2
 def leer_imagen(ruta):
     """
     La función leer_imagen recibe un string con la ruta

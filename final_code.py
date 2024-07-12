@@ -5,6 +5,19 @@ from sklearn.datasets import load_digits
 import filtro_pecador as fp
 import os
 
+# Cargar el dataset digits de sklearn
+digitos = load_digits()
+
+# Obtener las imágenes y los targets del dataset
+imagenes = digitos.images
+targets = digitos.target
+
+# Crear una matriz para almacenar las imágenes promedio de cada dígito
+promedios = np.zeros((10, 8, 8))
+
+# Contar el número de ocurrencias de cada dígito
+contador = np.zeros(10)
+
 
 # Funciones ya implementadas
 
@@ -105,20 +118,6 @@ def array_custom(ruta):
     lista_limpia = np.array(lista_limpia)
     return lista_limpia
 
-
-# Cargar el dataset digits de sklearn
-digitos = load_digits()
-
-# Obtener las imágenes y los targets del dataset
-imagenes = digitos.images
-targets = digitos.target
-
-# Crear una matriz para almacenar las imágenes promedio de cada dígito
-promedios = np.zeros((10, 8, 8))
-
-# Contar el número de ocurrencias de cada dígito
-contador = np.zeros(10)
-
 # Calcular la imagen promedio de cada dígito
 for i in range(len(imagenes)):
     promedios[targets[i]] += imagenes[i]
@@ -129,12 +128,22 @@ for i in range(10):
 
 
 def mostrar_imagen_promedio(index):
+    """Muestra la imagen promedio de un dígito.
+
+    Args:
+        index (int): Número del dígito a mostrar.
+    """
     plt.imshow(promedios[index], cmap='gray')
     plt.title(f'Dígito {index}')
     plt.show()
 
 
 def leer_digito():
+    """Lee un dígito ingresado por el usuario.
+
+    Returns:
+        array: Dígitos ingresado por el usuario.
+    """
     digito = []
     print("Ingrese los 64 valores del dígito (8x8):")
     for i in range(8):
@@ -144,6 +153,15 @@ def leer_digito():
 
 
 def calcular_distancia_euclidiana(img1, img2):
+    """Calcula la distancia euclidiana entre dos imágenes.
+
+    Args:
+        img1 (arrays): Imagen 1.
+        img2 (array): Imagen 2.
+
+    Returns:
+        float: Distancia euclidiana entre las dos imágenes.
+    """
     altura1, ancho1 = len(img1), len(img1[0])
     altura2, ancho2 = len(img2), len(img2[0])
 
@@ -161,6 +179,14 @@ def calcular_distancia_euclidiana(img1, img2):
 
 
 def encontrar_mas_parecidos(nuevo_digito):
+    """Encuentra los dígitos más parecidos a uno nuevo.
+
+    Args:
+        nuevo_digito (array): Nuevo dígito a comparar.
+
+    Returns:
+        [()]: _description_
+    """
     distancias = []
     for i in range(len(imagenes)):
         distancia = calcular_distancia_euclidiana(nuevo_digito, imagenes[i])
